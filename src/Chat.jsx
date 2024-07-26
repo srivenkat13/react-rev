@@ -2,7 +2,9 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 
 const Chat = () => {
   const [messages, setMessage] = useState([]);
+  const [headerStyle, setHeaderStyle] = useState({});
   const chatBoxRef = useRef(null);
+  const headerRef = useRef(null);
   const exampleMessages = [
     "Hello!",
     "How are you?",
@@ -35,18 +37,61 @@ const Chat = () => {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [messages]);
+
+  useLayoutEffect(() => {
+    const chatBox = chatBoxRef.current;
+
+    const handleScroll = () => {
+      if (chatBox) {
+        const halfWay = chatBox.scrollHeight / 2;
+        if (chatBox.scrollTop > halfWay) {
+          setHeaderStyle({ backgroundColor: "lightred" });
+        } else {
+          setHeaderStyle({ backgroundColor: "lightblue" });
+        }
+      }
+    };
+    if (chatBox) {
+      chatBox.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (chatBox) {
+        chatBox.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [messages]);
   return (
     <>
       <h4 style={{ textAlign: "center" }}>Chats</h4>
+
       <div
         ref={chatBoxRef}
         style={{
           border: `1px solid gray`,
-          height: `100px`,
+          height: `200px`,
           overflowY: "auto",
           padding: `10px`,
+          position: "relative",
         }}
       >
+        <div
+          ref={headerRef}
+          style={{
+            padding: "2px",
+            position: "sticky",
+            zIndex: 1,
+            top: 0,
+            borderBottom: "0.5px solid gray",
+            ...headerStyle,
+          }}
+        >
+          {messages && (
+            <p style={{ textAlign: "center" }}>
+              {messages.length} messages are recieved
+            </p>
+          )}
+        </div>
         {messages.map((msg, index) => {
           return (
             <div
