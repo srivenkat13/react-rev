@@ -32,6 +32,13 @@ const App = () => {
       >
         Toggle Timer
       </button>
+
+      {/* <Button
+        data="hello"
+        clickAction={() => {
+          console.log("Clicked");
+        }}
+      /> */}
     </>
   );
 };
