@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "./Button.jsx";
 import Text from "./Text.jsx";
 import Timer from "./Timer.jsx";
+import Dimensions from "./Dimensions.jsx";
+import Chat from "./Chat.jsx";
 
 const App = () => {
   const handleClickPar = () => {
@@ -39,6 +41,9 @@ const App = () => {
           console.log("Clicked");
         }}
       /> */}
+
+      {/* <Dimensions /> */}
+      <Chat />
     </>
   );
 };
