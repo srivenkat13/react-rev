@@ -1,0 +1,46 @@
+.app-container {
+  /* display: flex; */
+}
+body {
+  margin: 0;
+}
+
+.sidenav {
+  width: 100vw;
+  height: 10vh;
+  background-color: #aeaeae;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding: 20px; */
+}
+
+.sidenav a {
+  text-decoration: none;
+  color: #333;
+  font-size: large;
+  font-weight: 600;
+  padding: 5px;
+  margin: 5px;
+  border: #007bff 2px solid;
+}
+
+.sidenav a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.main-content {
+  /* flex-grow: 1;
+  padding: 20px;
+  margin: 10px; */
+}
+
+.border {
+  border: 1px blue dashed;
+  margin: 4px;
+  padding-bottom: 10px;
+}
+.heading {
+  color: #007bff;
+}
