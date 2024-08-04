@@ -1,50 +1,18 @@
 import React, { useState } from "react";
-import Button from "./Button.jsx";
-import Text from "./Text.jsx";
-import Timer from "./Timer.jsx";
-import Dimensions from "./Dimensions.jsx";
-import Chat from "./Chat.jsx";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./Home";
+import { Practice } from "./components/Practice";
+import { Nav } from "./Nav";
 
 const App = () => {
-  const handleClickPar = () => {
-    alert(" clicked from Parent component");
-  };
-
-  const addMoreData = (first) => {
-    setData((prev) => [{ id: "e", text: "Drona" }, ...prev]);
-  };
-
-  const [data, setData] = useState([
-    { id: "a", text: "Arjuna" },
-    { id: "b", text: "Bheema" },
-    { id: "c", text: "Chanakya" },
-    { id: "d", text: "Duryodhana" },
-  ]);
-
-  const [timer, toggleTimer] = useState(true);
   return (
-    <>
-      {timer && <Timer />}
-      <br />
-
-      <button
-        onClick={() => {
-          toggleTimer(!timer);
-        }}
-      >
-        Toggle Timer
-      </button>
-
-      {/* <Button
-        data="hello"
-        clickAction={() => {
-          console.log("Clicked");
-        }}
-      /> */}
-
-      {/* <Dimensions /> */}
-      <Chat />
-    </>
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/practice" element={<Practice />} />
+      </Routes>
+    </div>
   );
 };
 

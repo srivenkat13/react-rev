@@ -13,6 +13,7 @@ module.exports = {
   ],
   devServer: {
     port: 3030, // you can change the port
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -33,5 +34,8 @@ module.exports = {
         options: { limit: false },
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
   },
 };
